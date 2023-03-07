@@ -1,5 +1,6 @@
 import logo from './utils/img/RM_Logo.png';
 import './App.css';
+import { Content } from './components/Content/Content';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
           <img src={logo} alt="logo" />
         </div>
       </header>
+      <Content />
     </div>
   );
 }
