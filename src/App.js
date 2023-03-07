@@ -4,8 +4,10 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <header>
+        <div className="logo_wrapper">
+          <img src={logo} alt="logo" />
+        </div>
       </header>
     </div>
   );
