@@ -1,4 +1,4 @@
-// import { actionGetData } from '../actions/getRickyMortyData';
+import { actionGetData } from '../actions/getRickyMortyData';
 
 const initialState = {
   items: [],
@@ -7,7 +7,7 @@ const initialState = {
 
 export function rickmortyReducer(state = initialState, action = {}) {
   switch (action.type) {
-    case 'GET_ITEMS':
+    case actionGetData.TYPE:
       return {
         ...state,
         items: action.payload.results

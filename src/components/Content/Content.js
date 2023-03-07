@@ -1,18 +1,13 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import { getRickyMortyData } from '../../actions/getRickyMortyData';
 import { ContentItem } from '../ContentItem/ContentItem';
 import './content.scss';
 
-export function Content() {
-  const dispatch = useDispatch();
-  const items = useSelector((state) => {
-    return state.rickandmarty.items;
-  });
+function ContentView({ items, getItems }) {
   useEffect(() => {
-    dispatch(getRickyMortyData());
-  }, [dispatch]);
+    getItems();
+  }, []);
 
   return (
     <div className="content_wrapper">
@@ -22,3 +17,13 @@ export function Content() {
     </div>
   );
 }
+
+const mapState = (state) => ({
+  items: state.rickandmarty.items
+});
+
+const mapDispatch = (dispatch) => ({
+  getItems: () => dispatch(getRickyMortyData())
+});
+
+export const Content = connect(mapState, mapDispatch)(ContentView);
