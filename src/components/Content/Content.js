@@ -7,7 +7,7 @@ import './content.scss';
 function ContentView({ items, getItems }) {
   useEffect(() => {
     getItems();
-  }, []);
+  }, [getItems]);
 
   return (
     <div className="content_wrapper">
