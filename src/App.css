@@ -1,11 +1,27 @@
 .App {
-  max-width: 1020px;
+  max-width: 1440px;
   margin: 0 auto;
+  padding: 0 160px;
+}
+@media screen and (max-width: 1094px) {
+  .App {
+    padding: 0 80px;
+  }
+}
+@media screen and (max-width: 750px) {
+  .App {
+    padding: 0 24px;
+  }
 }
 
 header {
   padding-top: 86px;
   padding-bottom: 30px;
+}
+@media screen and (max-width: 750px) {
+  header {
+    padding: 92px 0 32px;
+  }
 }
 
 .logo_wrapper {
@@ -13,6 +29,12 @@ header {
   height: 200px;
   overflow: hidden;
   margin: 0 auto;
+}
+@media screen and (max-width: 924px) {
+  .logo_wrapper {
+    width: 312px;
+    height: 104px;
+  }
 }
 .logo_wrapper img {
   width: 100%;

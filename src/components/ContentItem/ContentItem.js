@@ -12,12 +12,16 @@ export function ContentItem({ item }) {
     return (
       <div ref={ref} className="item_wrapper">
         {inView ? (
-          <img src={item.image} alt={item.name} />
+          <div className="item_img_wrapper">
+            <img src={item.image} alt={item.name} />
+          </div>
         ) : (
-          <div className="item_wrapper_skeleton"></div>
+          <div className="item_img_skeleton"></div>
         )}
-        <p>{item.name}</p>
-        <p>{item.species}</p>
+        <div className="item_text_block">
+          <p className="text_name">{item.name}</p>
+          <p className="text_species">{item.species}</p>
+        </div>
       </div>
     );
   }
