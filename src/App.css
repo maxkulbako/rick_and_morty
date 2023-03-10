@@ -14,30 +14,4 @@
   }
 }
 
-header {
-  padding-top: 86px;
-  padding-bottom: 30px;
-}
-@media screen and (max-width: 750px) {
-  header {
-    padding: 92px 0 32px;
-  }
-}
-
-.logo_wrapper {
-  width: 600px;
-  height: 200px;
-  overflow: hidden;
-  margin: 0 auto;
-}
-@media screen and (max-width: 924px) {
-  .logo_wrapper {
-    width: 312px;
-    height: 104px;
-  }
-}
-.logo_wrapper img {
-  width: 100%;
-}
-
 /*# sourceMappingURL=App.css.map */

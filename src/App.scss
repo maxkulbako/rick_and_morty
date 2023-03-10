@@ -10,28 +10,3 @@
     padding: 0 24px;
   }
 }
-
-header {
-  padding-top: 86px;
-  padding-bottom: 30px;
-
-  @media screen and (max-width: 750px) {
-    padding: 92px 0 32px;
-  }
-}
-
-.logo_wrapper {
-  width: 600px;
-  height: 200px;
-  overflow: hidden;
-  margin: 0 auto;
-
-  @media screen and (max-width: 924px) {
-    width: 312px;
-    height: 104px;
-  }
-
-  img {
-    width: 100%;
-  }
-}

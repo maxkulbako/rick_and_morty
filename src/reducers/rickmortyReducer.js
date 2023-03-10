@@ -1,10 +1,11 @@
 /* eslint-disable function-paren-newline */
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable no-case-declarations */
-import { actionGetData } from '../actions/getRickyMortyData';
+import { actionGetData, actionGetCharacterData } from '../actions';
 
 const initialState = {
   items: [],
+  activeItem: {},
   isFetching: true
 };
 
@@ -17,6 +18,12 @@ export function rickmortyReducer(state = initialState, action = {}) {
       return {
         ...state,
         items: sortedItems
+      };
+
+    case actionGetCharacterData.TYPE:
+      return {
+        ...state,
+        activeItem: action.payload
       };
     default:
       return state;

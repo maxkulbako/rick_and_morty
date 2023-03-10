@@ -19,8 +19,7 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react",
-        "axios"
+        "react"
     ],
     "rules": {
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],

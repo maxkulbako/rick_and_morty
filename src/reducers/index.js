@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import { rickmortyReducer } from './rickmortyReducer';
 
 const rootReducer = combineReducers({
-  rickandmarty: rickmortyReducer
+  rickandmorty: rickmortyReducer
 });
 
-export const store = createStore(rootReducer, applyMiddleware(logger, thunk));
+export const store = createStore(rootReducer, applyMiddleware(thunk, logger));

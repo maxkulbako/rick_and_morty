@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 import axios from 'axios';
 import { createPayloadAction } from '../utils/_helpers';
 
