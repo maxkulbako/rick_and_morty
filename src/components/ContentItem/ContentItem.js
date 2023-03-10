@@ -16,7 +16,7 @@ export function ContentItem({ item }) {
             <img src={item.image} alt={item.name} />
           </div>
         ) : (
-          <div className="item_img_skeleton"></div>
+          <div className="item_img_skeleton" />
         )}
         <div className="item_text_block">
           <p className="text_name">{item.name}</p>
