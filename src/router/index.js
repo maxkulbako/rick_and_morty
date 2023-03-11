@@ -3,19 +3,20 @@ import { createBrowserRouter } from 'react-router-dom';
 import { MainPage } from '../components/MainPage/MainPage';
 import { Character } from '../components/Character/Character';
 import { ErrorPage } from './ErrorPage';
+import App from '../App';
 
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <MainPage />,
-    errorElement: <ErrorPage />
-  },
-  {
-    path: 'characters/',
-    element: <Character />,
+    element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
-        path: ':characterId',
+        path: '/',
+        element: <MainPage />
+      },
+      {
+        path: 'characters/:characterId',
         element: <Character />
       }
     ]

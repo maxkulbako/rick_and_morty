@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getRickyMortyData } from '../../actions';
 import { ContentItem } from '../ContentItem/ContentItem';
@@ -11,17 +11,23 @@ function ContentView({ items, getItems }) {
     getItems();
   }, [getItems]);
 
+  const isFetching = useSelector((state) => state.rickandmorty.isFetching);
+
   return (
     <div className="content_wrapper">
-      {items.map((item) => (
-        <Link
-          to={`characters/${item.id}`}
-          key={item.id}
-          style={{ textDecoration: 'none' }}
-        >
-          <ContentItem item={item} />
-        </Link>
-      ))}
+      {!isFetching ? (
+        items.map((item) => (
+          <Link
+            to={`characters/${item.id}`}
+            key={item.id}
+            style={{ textDecoration: 'none' }}
+          >
+            <ContentItem item={item} />
+          </Link>
+        ))
+      ) : (
+        <div className="fetching" />
+      )}
     </div>
   );
 }

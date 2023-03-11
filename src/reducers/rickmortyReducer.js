@@ -1,7 +1,12 @@
+/* eslint-disable object-curly-newline */
 /* eslint-disable function-paren-newline */
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable no-case-declarations */
-import { actionGetData, actionGetCharacterData } from '../actions';
+import {
+  actionGetData,
+  actionGetCharacterData,
+  actionSetFetching
+} from '../actions';
 
 const initialState = {
   items: [],
@@ -17,13 +22,31 @@ export function rickmortyReducer(state = initialState, action = {}) {
       );
       return {
         ...state,
-        items: sortedItems
+        items: sortedItems,
+        isFetching: false
       };
 
     case actionGetCharacterData.TYPE:
+      const { id, name, status, type, gender, origin, image } = action.payload;
+      const updatedActiveItem = {
+        id,
+        name,
+        status,
+        type,
+        gender,
+        origin: origin.name,
+        image
+      };
       return {
         ...state,
-        activeItem: action.payload
+        activeItem: updatedActiveItem,
+        isFetching: false
+      };
+
+    case actionSetFetching.TYPE:
+      return {
+        ...state,
+        isFetching: action.payload
       };
     default:
       return state;

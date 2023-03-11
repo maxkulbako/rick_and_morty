@@ -1,11 +1,14 @@
+/* eslint-disable no-console */
 /* eslint-disable no-plusplus */
 import axios from 'axios';
 import { createPayloadAction } from '../utils/_helpers';
+import { actionSetFetching } from './setFetching';
 
 export const actionGetData = createPayloadAction('GET_ITEMS');
 
 export const getRickyMortyData = (resource = 'character') => {
   return async (dispatch) => {
+    dispatch(actionSetFetching(true));
     try {
       const response = await axios.get(
         `https://rickandmortyapi.com/api/${resource}`
