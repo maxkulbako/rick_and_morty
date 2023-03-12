@@ -6,19 +6,23 @@ import { actionSetFetching } from './setFetching';
 
 export const actionGetData = createPayloadAction('GET_ITEMS');
 
-export const getRickyMortyData = (resource = 'character') => {
+export const getRickyMortyData = (name = null, resource = 'character') => {
+  const refinedRequest = name ? `name=${name}` : '';
+
   return async (dispatch) => {
     dispatch(actionSetFetching(true));
     try {
       const response = await axios.get(
-        `https://rickandmortyapi.com/api/${resource}`
+        `https://rickandmortyapi.com/api/${resource}?${refinedRequest}`
       );
       const { info } = response.data;
 
       const promises = [];
       for (let i = 2; i <= info.pages; i++) {
         promises.push(
-          axios.get(`https://rickandmortyapi.com/api/${resource}?page=${i}`)
+          axios.get(
+            `https://rickandmortyapi.com/api/${resource}?page=${i}&${refinedRequest}`
+          )
         );
       }
 
@@ -30,7 +34,11 @@ export const getRickyMortyData = (resource = 'character') => {
 
       dispatch(actionGetData(allData));
     } catch (error) {
-      console.error(error);
+      if (error.response.status !== 200) {
+        dispatch(actionGetData([]));
+      } else {
+        console.error(error);
+      }
     }
   };
 };

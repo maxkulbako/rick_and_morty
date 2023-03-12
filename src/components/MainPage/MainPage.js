@@ -1,8 +1,12 @@
+import { useState } from 'react';
 import './mainpage.scss';
 import logo from '../../utils/img/RM_Logo.png';
 import { Content } from '../Content/Content';
+import { SearchBar } from '../SearchBar/SearchBar';
 
 export function MainPage() {
+  const [search, setSearch] = useState('');
+
   return (
     <>
       <header>
@@ -10,7 +14,8 @@ export function MainPage() {
           <img src={logo} alt="logo" />
         </div>
       </header>
-      <Content />
+      <SearchBar search={search} setSearch={setSearch} />
+      <Content search={search} />
     </>
   );
 }

@@ -22,7 +22,7 @@ function CharacterView({ getCharacter, activeItem }) {
   return (
     <div className="character_page_conteiner">
       <Link to="/">
-        <button type="button">
+        <button type="button" className="back_button">
           <svg
             width="24"
             height="24"
