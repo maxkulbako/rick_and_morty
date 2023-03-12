@@ -14,7 +14,7 @@ export function MainPage() {
           <img src={logo} alt="logo" />
         </div>
       </header>
-      <SearchBar search={search} setSearch={setSearch} />
+      <SearchBar setSearch={setSearch} />
       <Content search={search} />
     </>
   );

@@ -1,6 +1,29 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable import/no-extraneous-dependencies */
+import { useState, useCallback } from 'react';
 import './searchbar.scss';
+import debounce from 'lodash.debounce';
 
-export function SearchBar({ search, setSearch }) {
+export function SearchBar({ setSearch }) {
+  const [value, setValue] = useState('');
+
+  const onSearchClear = () => {
+    setSearch('');
+    setValue('');
+  };
+
+  const updateSearchValue = useCallback(
+    debounce((text) => {
+      setSearch(text);
+    }, 1000),
+    []
+  );
+
+  const onChangeInput = (e) => {
+    setValue(e.target.value);
+    updateSearchValue(e.target.value);
+  };
+
   return (
     <div className="search_wrapper">
       <div className="search_icon">
@@ -13,16 +36,12 @@ export function SearchBar({ search, setSearch }) {
         </svg>
       </div>
       <input
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        value={value}
+        onChange={onChangeInput}
         placeholder="Filter by name..."
       />
-      {search && (
-        <button
-          type="button"
-          className="clear_button"
-          onClick={() => setSearch('')}
-        >
+      {value && (
+        <button type="button" className="clear_button" onClick={onSearchClear}>
           <svg viewBox="0 0 24 24">
             <path fill="none" d="M0 0h24v24H0V0z" />
             <path
