@@ -34,11 +34,8 @@ export const getRickyMortyData = (name = null, resource = 'character') => {
 
       dispatch(actionGetData(allData));
     } catch (error) {
-      if (error.response.status !== 200) {
-        dispatch(actionGetData([]));
-      } else {
-        console.error(error);
-      }
+      dispatch(actionGetData([]));
+      console.error(error);
     }
   };
 };
