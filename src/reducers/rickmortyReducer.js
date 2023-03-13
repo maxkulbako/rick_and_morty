@@ -22,8 +22,7 @@ export function rickmortyReducer(state = initialState, action = {}) {
       );
       return {
         ...state,
-        items: sortedItems,
-        isFetching: false
+        items: sortedItems
       };
 
     case actionGetCharacterData.TYPE:
@@ -39,8 +38,7 @@ export function rickmortyReducer(state = initialState, action = {}) {
       };
       return {
         ...state,
-        activeItem: updatedActiveItem,
-        isFetching: false
+        activeItem: updatedActiveItem
       };
 
     case actionSetFetching.TYPE:

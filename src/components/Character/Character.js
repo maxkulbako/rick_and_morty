@@ -12,6 +12,8 @@ function CharacterView({ getCharacter, activeItem }) {
 
   useEffect(() => {
     getCharacter(characterId);
+
+    window.scroll(0, 0);
   }, []);
 
   const isFetching = useSelector((state) => state.rickandmorty.isFetching);

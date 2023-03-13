@@ -35,7 +35,8 @@ export const getRickyMortyData = (name = null, resource = 'character') => {
       dispatch(actionGetData(allData));
     } catch (error) {
       dispatch(actionGetData([]));
-      console.error(error);
+    } finally {
+      dispatch(actionSetFetching(false));
     }
   };
 };

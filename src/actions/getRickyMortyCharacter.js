@@ -7,9 +7,15 @@ export const actionGetCharacterData = createPayloadAction('GET_CHARACTER');
 export const getRickyMortyCharacter = (id) => {
   return async (dispatch) => {
     dispatch(actionSetFetching(true));
-    const response = await axios.get(
-      `https://rickandmortyapi.com/api/character/${id}`
-    );
-    dispatch(actionGetCharacterData(response.data));
+    try {
+      const response = await axios.get(
+        `https://rickandmortyapi.com/api/character/${id}`
+      );
+      dispatch(actionGetCharacterData(response.data));
+    } catch (error) {
+      dispatch(actionGetCharacterData([]));
+    } finally {
+      dispatch(actionSetFetching(false));
+    }
   };
 };
