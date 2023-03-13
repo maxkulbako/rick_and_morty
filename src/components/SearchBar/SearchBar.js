@@ -1,11 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable import/no-extraneous-dependencies */
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import './searchbar.scss';
 import debounce from 'lodash.debounce';
 
 export function SearchBar({ setSearch }) {
   const [value, setValue] = useState('');
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const searchValue = searchParams.get('name') || '';
+    setValue(searchValue);
+    setSearch(searchValue);
+  }, [setSearch]);
 
   const onSearchClear = () => {
     setSearch('');

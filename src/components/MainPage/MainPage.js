@@ -15,7 +15,7 @@ export function MainPage() {
         </div>
       </header>
       <SearchBar setSearch={setSearch} />
-      <Content search={search} />
+      <Content search={search} setSearch={setSearch} />
     </>
   );
 }
