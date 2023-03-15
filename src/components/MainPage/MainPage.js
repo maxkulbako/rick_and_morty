@@ -1,11 +1,23 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
 import './mainpage.scss';
+import { useSearchParams } from 'react-router-dom';
+import { connect } from 'react-redux';
 import logo from '../../utils/img/RM_Logo.png';
 import { Content } from '../Content/Content';
 import { SearchBar } from '../SearchBar/SearchBar';
 
-export function MainPage() {
-  const [search, setSearch] = useState('');
+import { getRickyMortyData } from '../../actions';
+
+export function MainPageView({ items, getItems }) {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const nameQuery = searchParams.get('name') || '';
+
+  useEffect(() => {
+    getItems(nameQuery);
+
+    window.scroll(0, 0);
+  }, [getItems, nameQuery]);
 
   return (
     <>
@@ -14,8 +26,18 @@ export function MainPage() {
           <img src={logo} alt="logo" />
         </div>
       </header>
-      <SearchBar setSearch={setSearch} />
-      <Content search={search} setSearch={setSearch} />
+      <SearchBar setSearchParams={setSearchParams} searchValue={nameQuery} />
+      <Content items={items} />
     </>
   );
 }
+
+const mapState = (state) => ({
+  items: state.rickandmorty.items
+});
+
+const mapDispatch = (dispatch) => ({
+  getItems: (text) => dispatch(getRickyMortyData(text))
+});
+
+export const MainPage = connect(mapState, mapDispatch)(MainPageView);
