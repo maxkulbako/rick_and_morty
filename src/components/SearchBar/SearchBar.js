@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable import/no-extraneous-dependencies */
 import { useState, useCallback } from 'react';
-import './searchbar.scss';
 import debounce from 'lodash.debounce';
+import './searchbar.scss';
 
 export function SearchBar({ searchValue, setSearchParams }) {
   const [value, setValue] = useState(searchValue);
