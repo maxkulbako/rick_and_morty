@@ -9,7 +9,7 @@ export function Auth() {
 
   const handleGoogleLogin = async () => {
     await dispatch(loginWithGoogle());
-    navigate('/');
+    navigate(-1);
   };
 
   return (

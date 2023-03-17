@@ -36,7 +36,7 @@
     transform: rotate(360deg) scale(1.5);
   }
 }
-.auth_block {
+.sign_up_wrapper {
   position: absolute;
   top: 21px;
   right: 50px;
@@ -50,21 +50,13 @@
   line-height: 21px;
   text-transform: uppercase;
   color: #000000;
+  transition: 0.3s ease-in;
 }
-.auth_block .login_link {
-  text-decoration: noen;
-  color: #000000;
-}
-.auth_block .login_link:hover {
-  opacity: 0.5;
-}
-
-.logout {
+.sign_up_wrapper button {
   cursor: pointer;
 }
-.logout svg {
-  width: 24px;
-  height: 24px;
+.sign_up_wrapper button:hover {
+  opacity: 0.5;
 }
 
 /*# sourceMappingURL=App.css.map */

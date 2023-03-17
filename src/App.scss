@@ -34,7 +34,7 @@
   }
 }
 
-.auth_block {
+.sign_up_wrapper {
   position: absolute;
   top: 21px;
   right: 50px;
@@ -48,21 +48,13 @@
   line-height: 21px;
   text-transform: uppercase;
   color: #000000;
+  transition: 0.3s ease-in;
 
-  .login_link {
-    text-decoration: noen;
-    color: #000000;
+  button {
+    cursor: pointer;
 
     &:hover {
       opacity: 0.5;
     }
-  }
-}
-.logout {
-  cursor: pointer;
-
-  svg {
-    width: 24px;
-    height: 24px;
   }
 }

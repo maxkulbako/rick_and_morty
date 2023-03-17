@@ -13,14 +13,14 @@ export function MainPageView({ items, getItems, activeUser }) {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const nameQuery = searchParams.get('name') || '';
-  console.log(activeUser.id);
+
   useEffect(() => {
     if (activeUser.id) {
       getItems(nameQuery);
     } else navigate('/login');
 
     window.scroll(0, 0);
-  }, [getItems, nameQuery]);
+  }, [getItems, nameQuery, activeUser]);
 
   return (
     <>
