@@ -1,23 +1,53 @@
 .auth_container {
-  margin: 30px auto;
-  width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.auth_wrapper {
+  width: 400px;
   height: 400px;
-  border: 2px solid black;
   display: flex;
   flex-direction: column;
-  gap: 30px;
   align-items: center;
+}
 
-  .login_name {
-    margin-bottom: 20px;
-  }
+.auth_title {
+  margin-bottom: 40px;
+}
 
-  .login_google {
-    margin: 0 auto;
-    width: 100px;
-    height: 20px;
-    background-color: rgb(225, 226, 226);
-    color: #494646;
+.login_wrapper {
+  button {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 2px 10px;
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    border: 2px solid rgb(172, 165, 165);
     cursor: pointer;
+    transition: 0.3s ease-in;
+
+    &:hover {
+      background-color: rgb(217, 221, 221);
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    p {
+      display: inline-block;
+      font-family: 'Karla';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 21px;
+      text-transform: uppercase;
+      color: #000000;
+    }
   }
 }

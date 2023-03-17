@@ -1,31 +1,30 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
 import './mainpage.scss';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
-import logo from '../../utils/img/RM_Logo.png';
 import { Content } from '../Content/Content';
 import { SearchBar } from '../SearchBar/SearchBar';
+import { Header } from '../Header/Header';
 
 import { getRickyMortyData } from '../../actions';
 
-export function MainPageView({ items, getItems }) {
+export function MainPageView({ items, getItems, activeUser }) {
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
-
   const nameQuery = searchParams.get('name') || '';
-
+  console.log(activeUser.id);
   useEffect(() => {
-    getItems(nameQuery);
+    if (activeUser.id) {
+      getItems(nameQuery);
+    } else navigate('/login');
 
     window.scroll(0, 0);
   }, [getItems, nameQuery]);
 
   return (
     <>
-      <header>
-        <div className="logo_wrapper">
-          <img src={logo} alt="logo" />
-        </div>
-      </header>
+      <Header />
       <SearchBar setSearchParams={setSearchParams} searchValue={nameQuery} />
       <Content items={items} />
     </>
@@ -33,7 +32,8 @@ export function MainPageView({ items, getItems }) {
 }
 
 const mapState = (state) => ({
-  items: state.rickandmorty.items
+  items: state.rickandmorty.items,
+  activeUser: state.auth.activeUser
 });
 
 const mapDispatch = (dispatch) => ({

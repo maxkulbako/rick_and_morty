@@ -1,26 +1,35 @@
-/* eslint-disable no-case-declarations */
-import { actionAuthLogin, actionAuthLogout } from '../actions/actionAuth';
+import { actionAuthSignIn, actionAuthSignUp } from '../actions/actionAuth';
 
 const initialState = {
-  activeUser: null
+  activeUser: {
+    id: null,
+    name: null,
+    token: null
+  }
 };
 
 export function authReducer(state = initialState, action = {}) {
   switch (action.type) {
-    case actionAuthLogin.TYPE:
+    case actionAuthSignIn.TYPE:
       return {
         ...state,
         activeUser: {
           ...state.activeUser,
+          id: action.payload.uid,
           name: action.payload.displayName,
-          picture: action.payload.photoURL
+          token: action.payload.accessToken
         }
       };
 
-    case actionAuthLogout.TYPE:
+    case actionAuthSignUp.TYPE:
       return {
         ...state,
-        activeUser: null
+        activeUser: {
+          ...state.activeUser,
+          id: null,
+          name: null,
+          token: null
+        }
       };
     default:
       return state;

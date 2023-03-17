@@ -1,16 +1,9 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { createBrowserRouter } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { MainPage } from '../components/MainPage/MainPage';
 import { Character } from '../components/Character/Character';
 import { ErrorPage } from './ErrorPage';
-import { Auth } from '../components/Auth/Auth';
 import App from '../App';
-
-function CurrentPage() {
-  const activeUser = useSelector((state) => state.auth.activeUser);
-  return activeUser ? <MainPage /> : <Auth />;
-}
+import { Auth } from '../components/Auth/Auth';
 
 export const router = createBrowserRouter([
   {
@@ -20,11 +13,15 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <CurrentPage />
+        element: <MainPage />
       },
       {
         path: 'characters/:characterId',
         element: <Character />
+      },
+      {
+        path: '/login',
+        element: <Auth />
       }
     ]
   }

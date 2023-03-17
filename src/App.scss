@@ -34,8 +34,35 @@
   }
 }
 
-.logout {
+.auth_block {
   position: absolute;
-  top: 20px;
-  left: 50px;
+  top: 21px;
+  right: 50px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 21px;
+  text-transform: uppercase;
+  color: #000000;
+
+  .login_link {
+    text-decoration: noen;
+    color: #000000;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}
+.logout {
+  cursor: pointer;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
 }
