@@ -1,6 +1,7 @@
 {
   "name": "rick_and_morty",
   "version": "0.1.0",
+  "homepage": "https://maxkulbako.github.io/rick_and_morty",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -27,7 +28,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -48,6 +51,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^5.0.0",
     "webpack": "^5.76.2"
   }
 }
