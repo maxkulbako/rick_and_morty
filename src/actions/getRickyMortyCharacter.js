@@ -1,8 +1,8 @@
-import axios from 'axios';
-import { createPayloadAction } from '../utils/_helpers';
-import { actionSetFetching } from './setFetching';
+import axios from "axios";
+import { createPayloadAction } from "../utils/_helpers";
+import { actionSetFetching } from "./setFetching";
 
-export const actionGetCharacterData = createPayloadAction('GET_CHARACTER');
+export const actionGetCharacterData = createPayloadAction("GET_CHARACTER");
 
 export const getRickyMortyCharacter = (id) => {
   return async (dispatch) => {

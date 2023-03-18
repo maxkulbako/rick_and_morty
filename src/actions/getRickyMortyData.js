@@ -1,13 +1,11 @@
-/* eslint-disable no-console */
-/* eslint-disable no-plusplus */
-import axios from 'axios';
-import { createPayloadAction } from '../utils/_helpers';
-import { actionSetFetching } from './setFetching';
+import axios from "axios";
+import { createPayloadAction } from "../utils/_helpers";
+import { actionSetFetching } from "./setFetching";
 
-export const actionGetData = createPayloadAction('GET_ITEMS');
+export const actionGetData = createPayloadAction("GET_ITEMS");
 
-export const getRickyMortyData = (name = null, resource = 'character') => {
-  const refinedRequest = name ? `name=${name}` : '';
+export const getRickyMortyData = (name = null, resource = "character") => {
+  const refinedRequest = name ? `name=${name}` : "";
 
   return async (dispatch) => {
     dispatch(actionSetFetching(true));

@@ -1,35 +1,21 @@
-import { actionAuthSignIn, actionAuthSignUp } from '../actions/actionAuth';
+import { actionSignIn, actionSignOut } from "../actions";
 
 const initialState = {
-  activeUser: {
-    id: null,
-    name: null,
-    token: null
-  }
+  user: {},
 };
 
 export function authReducer(state = initialState, action = {}) {
   switch (action.type) {
-    case actionAuthSignIn.TYPE:
+    case actionSignIn.TYPE:
       return {
         ...state,
-        activeUser: {
-          ...state.activeUser,
-          id: action.payload.uid,
-          name: action.payload.displayName,
-          token: action.payload.accessToken
-        }
+        user: action.payload,
       };
 
-    case actionAuthSignUp.TYPE:
+    case actionSignOut.TYPE:
       return {
         ...state,
-        activeUser: {
-          ...state.activeUser,
-          id: null,
-          name: null,
-          token: null
-        }
+        user: {},
       };
     default:
       return state;

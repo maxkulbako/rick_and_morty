@@ -1,5 +1,5 @@
-import './header.scss';
-import logo from '../../utils/img/RM_Logo.png';
+import "./header.scss";
+import logo from "../../../../utils/img/RM_Logo.png";
 
 export function Header() {
   return (

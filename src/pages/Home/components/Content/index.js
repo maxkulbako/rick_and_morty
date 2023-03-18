@@ -1,8 +1,8 @@
 /* eslint-disable no-nested-ternary */
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { ContentItem } from '../ContentItem/ContentItem';
-import './content.scss';
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { ContentItem } from "../ContentItem";
+import "./content.scss";
 
 export function Content({ items }) {
   const isFetching = useSelector((state) => state.rickandmorty.isFetching);
@@ -18,7 +18,7 @@ export function Content({ items }) {
               className="item_container"
               to={`characters/${item.id}`}
               key={item.id}
-              style={{ textDecoration: 'none' }}
+              style={{ textDecoration: "none" }}
             >
               <ContentItem item={item} />
             </Link>

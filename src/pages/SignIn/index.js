@@ -1,23 +1,32 @@
-import './auth.scss';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { loginWithGoogle } from '../../actions/actionAuth';
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-export function Auth() {
-  const dispatch = useDispatch();
+import { googleSignInRedux } from "../../actions";
+
+import "./signin.scss";
+
+export const Signin = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
 
-  const handleGoogleLogin = async () => {
-    await dispatch(loginWithGoogle());
-    navigate(-1);
+  const handleGoogleSignIn = () => {
+    dispatch(googleSignInRedux());
   };
+
+  useEffect(() => {
+    if (user != null) {
+      navigate(-1);
+    }
+  }, [user]);
 
   return (
     <div className="auth_container">
       <div className="auth_wrapper">
-        <p className="auth_title">LOGIN</p>
+        <p className="auth_title">LOGIN with</p>
         <div className="login_wrapper">
-          <button onClick={handleGoogleLogin}>
+          <button onClick={handleGoogleSignIn}>
             <svg preserveAspectRatio="xMidYMid" viewBox="0 0 256 262">
               <path
                 fill="#4285F4"
@@ -42,4 +51,4 @@ export function Auth() {
       </div>
     </div>
   );
-}
+};

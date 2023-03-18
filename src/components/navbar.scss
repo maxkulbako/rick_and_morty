@@ -1,0 +1,38 @@
+.navbar_wrapper {
+  position: absolute;
+  top: 21px;
+  right: 50px;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+
+  @media screen and (max-width: 510px) {
+    p {
+      display: none;
+    }
+  }
+
+  .button {
+    cursor: pointer;
+    font-family: "Karla";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 21px;
+    text-transform: uppercase;
+    color: #000000;
+    transition: 0.3s ease-in;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      opacity: 0.5;
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

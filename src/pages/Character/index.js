@@ -1,10 +1,8 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable import/no-extraneous-dependencies */
-import { useEffect } from 'react';
-import './character.scss';
-import { useParams, useNavigate } from 'react-router-dom';
-import { connect, useSelector } from 'react-redux';
-import { getRickyMortyCharacter } from '../../actions';
+import { useEffect } from "react";
+import "./character.scss";
+import { useParams, useNavigate } from "react-router-dom";
+import { connect, useSelector } from "react-redux";
+import { getRickyMortyCharacter } from "../../actions";
 
 function CharacterView({ getCharacter, activeItem }) {
   const { characterId } = useParams();
@@ -75,7 +73,7 @@ function CharacterView({ getCharacter, activeItem }) {
             <div className="info_block">
               <p className="info_title">Type</p>
               <p className="info_value">
-                {activeItem.type ? activeItem.type : 'Unknown'}
+                {activeItem.type ? activeItem.type : "Unknown"}
               </p>
               <div className="divider" />
             </div>
@@ -87,11 +85,11 @@ function CharacterView({ getCharacter, activeItem }) {
 }
 
 const mapDispatch = (dispatch) => ({
-  getCharacter: (id) => dispatch(getRickyMortyCharacter(id))
+  getCharacter: (id) => dispatch(getRickyMortyCharacter(id)),
 });
 
 const mapState = (state) => ({
-  activeItem: state.rickandmorty.activeItem
+  activeItem: state.rickandmorty.activeItem,
 });
 
 export const Character = connect(mapState, mapDispatch)(CharacterView);

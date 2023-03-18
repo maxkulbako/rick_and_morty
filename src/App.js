@@ -1,26 +1,35 @@
-import './App.css';
-import { Outlet } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { actionAuthSignUp } from './actions/actionAuth';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar.jsx";
+import { Home, Character, Signin } from "./pages";
+import { useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase";
+import { actionSignIn } from "./actions";
+import { useDispatch } from "react-redux";
+
+import "./App.css";
 
 function App() {
-  const activeUser = useSelector((state) => state.auth.activeUser);
   const dispatch = useDispatch();
-
-  const handleSignUp = () => {
-    dispatch(actionAuthSignUp());
-  };
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      console.log("User from APP", currentUser);
+      dispatch(actionSignIn(currentUser));
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
   return (
     <div className="App">
-      {activeUser.id && (
-        <div className="sign_up_wrapper">
-          <p>{activeUser.name}</p>
-          <button onClick={handleSignUp}>SIGN UP</button>
-        </div>
-      )}
-
-      <Outlet />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/signin" element={<Signin />} />
+        <Route path="/characters/:characterId" element={<Character />} />
+      </Routes>
     </div>
   );
 }

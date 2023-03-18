@@ -1,17 +1,13 @@
-/* eslint-disable object-curly-newline */
-/* eslint-disable function-paren-newline */
-/* eslint-disable implicit-arrow-linebreak */
-/* eslint-disable no-case-declarations */
 import {
   actionGetData,
   actionGetCharacterData,
-  actionSetFetching
-} from '../actions';
+  actionSetFetching,
+} from "../actions";
 
 const initialState = {
   items: [],
   activeItem: {},
-  isFetching: true
+  isFetching: true,
 };
 
 export function rickmortyReducer(state = initialState, action = {}) {
@@ -22,7 +18,7 @@ export function rickmortyReducer(state = initialState, action = {}) {
       );
       return {
         ...state,
-        items: sortedItems
+        items: sortedItems,
       };
 
     case actionGetCharacterData.TYPE:
@@ -34,17 +30,17 @@ export function rickmortyReducer(state = initialState, action = {}) {
         type,
         gender,
         origin: origin.name,
-        image
+        image,
       };
       return {
         ...state,
-        activeItem: updatedActiveItem
+        activeItem: updatedActiveItem,
       };
 
     case actionSetFetching.TYPE:
       return {
         ...state,
-        isFetching: action.payload
+        isFetching: action.payload,
       };
     default:
       return state;

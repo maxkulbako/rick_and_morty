@@ -1,11 +1,11 @@
-import { useInView } from 'react-intersection-observer';
+import { useInView } from "react-intersection-observer";
 
-import './contentItem.scss';
+import "./contentItem.scss";
 
 export function ContentItem({ item }) {
   const { ref, inView } = useInView({
     threshold: 0,
-    triggerOnce: true
+    triggerOnce: true,
   });
 
   if (item) {
